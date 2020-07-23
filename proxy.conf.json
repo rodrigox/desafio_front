@@ -1,0 +1,8 @@
+{
+  "/api/*": {
+    "target": "http://localhost:8086/carsystem",
+    "secure": false,
+    "changeOrigin": true,
+    "timeout": 10000000
+  }
+}
