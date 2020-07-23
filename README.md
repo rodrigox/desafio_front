@@ -1,27 +1,47 @@
-# Desafio
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.3.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+***********Historias de usuario ***************
 
-## Code scaffolding
+00 Criar um novo usuario
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+01 Listar todos os Usuarios 
 
-## Build
+02 Buscar Usuario por ID 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+03 Remover Usuario 
 
-## Running unit tests
+04 Atualizar Usuario 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+#Usuario logado 
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+05 Exibir informações do usuario  
 
-## Further help
+06 Cadastrar um carro para usuario 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+07 Listar Carros do usuario 
+
+08 Remover carro do usuario 
+
+09 Atualizar carro do usuario 
+
+
+
+***********SOLUÇÃO **************
+
+
+************INSTRUÇÕES  PARA EXECUTAR O PROJETO  **************
+
+
+
+* intalar um cliente git na maquina 
+
+* Baixar o projeto do repositorio remoto  ->   https://github.com/rodrigox/desafio_front.git
+
+* Utilizar o Git bath ou terminal para startar a aplicação utilizando o comando : npm start
+
+* Acessar a URL http://localhost:4200/home no navegador .
+
+
+
