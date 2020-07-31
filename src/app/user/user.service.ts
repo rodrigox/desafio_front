@@ -49,8 +49,10 @@ saveUser(user: User): Observable<User> {
       );
 }
 
-deleteUser(user: User): Observable<User> {
-  return this.http.delete <User>(this.userUrl + user.idUser).pipe(tap(data => console.log('DELETE REQ' + JSON.stringify(data))),
+
+
+deleteUser(idUser: any): Observable<User> {
+  return this.http.delete <User>(this.userUrl + idUser).pipe(tap(data => console.log('DELETE REQ' + JSON.stringify(data))),
     catchError(this.handleError)
       );
 }

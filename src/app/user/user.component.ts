@@ -37,4 +37,9 @@ export class UserComponent implements OnInit {
     console.log('salvou salvou');
   }
 
+  deleteUser(idUser: any){
+    this.userService.deleteUser(idUser).subscribe(response => this.user);
+    this.getUser();
+  }
+
 }
