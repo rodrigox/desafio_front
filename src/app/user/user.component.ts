@@ -42,4 +42,11 @@ export class UserComponent implements OnInit {
     this.getUser();
   }
 
+
+ updateUser() {
+  this.userService.updateUser(this.user).subscribe(response => this.user);
+  this.getUser();
+  console.log('atualizou');
+}
+
 }

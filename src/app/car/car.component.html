@@ -1,0 +1,106 @@
+<div class="container" style="margin-top: 50px;">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-10 mx-auto">
+      <div class="card">
+        <div class="card-header">
+          <label class="custom-control-label" for="customCheck1">
+            {{ "Lista de Carros" }}</label>
+
+          <div class="text-right">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-cadastro-modal-xl"
+              data-whatever="@mdo">Cadastrar</button>
+          </div>
+
+
+          <div>
+            <div class="table-responsive">
+              <div class="table" *ngIf="cars && listCar.length">
+                <thead>
+                  <tr>
+                    <th>Model</th>
+                    <th>Year</th>
+                    <th>Color</th>
+                    <th>LicensePlate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let car of cars">
+                    <td>{{ car.model }}</td>
+                    <td>{{ car.year }}</td>
+                    <td>{{ car.color }}</td>
+                    <td>{{ car.licensePlate }}</td>
+
+
+                    <td>
+                    <td> <button type="submit" class="btn btn-light">Atualizar</button> </td>
+                    <td> <button type="submit" class="btn btn-light" (click)="deleteCar(car.idCar)">Remover</button>
+
+
+                  </tr>
+                </tbody>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Cadastro de Usuario -->
+
+<div class="modal fade bd-cadastro-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal de Carro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #carForm="ngForm" (ngSubmit)="onSubmit(carForm.value)"  >
+          <div class="row">
+            <div class="form-group mx-sm-3 mb-2">
+              <label for="recipient-name" class="col-form-label">Model </label>
+              <input #model="ngModel" required  type="text" class="form-control" [(ngModel)]="car.model" name="model" />
+              <span class="error">Color Field is required </span>
+            </div>
+            <div class="form-group mx-sm-2 mb-2">
+              <label for="message-text" class="col-form-label">Color</label>
+              <input  requred="true" type="email" class="form-control" [(ngModel)]="car.color" name="color">
+
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="form-group mx-sm-3 mb-5">
+              <label for="message-text" class="col-form-label">Year</label>
+              <input class="form-control" [(ngModel)]="car.year" name="year">
+            </div>
+            <div class="row">
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="message-text" class="col-form-label">LicensePlate</label>
+              <input class="form-control" [(ngModel)]="car.licensePlate" name="licensePlate">
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer"> <button type="submit" class="btn btn-primary" (click)="saveCar()"
+            data-dismiss="modal">Save</button>
+          <button type="button" class="btn btn-primary">Cancel</button>
+        </div>
+        </form>
+
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+</div>

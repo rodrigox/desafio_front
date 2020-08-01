@@ -1,38 +1,56 @@
 
 
 
+ 
+
+
 ***********Historias de usuario ***************
 
-00 Criar um novo usuario
+00 Criar um novo usuario e Listar Usuarios 
 
-01 Listar todos os Usuarios 
+01 Buscar Usuario por ID 
 
-02 Buscar Usuario por ID 
+02 Remover Usuario 
 
-03 Remover Usuario 
-
-04 Atualizar Usuario 
+03 Atualizar Usuario 
 
 
 #Usuario logado 
 
-05 Exibir informações do usuario  
 
-06 Cadastrar um carro para usuario 
+HST 04 Cadastrar e listar carro do Usuario
 
-07 Listar Carros do usuario 
+HST 05 Buscar Carros do usuario por id 
 
-08 Remover carro do usuario 
+HST 06 Remover carro do usuario 
 
-09 Atualizar carro do usuario 
+HST 07 Atualizar carro do usuario 
+
+HST  08 Exibir informações do usuario 
+
 
 
 
 ***********SOLUÇÃO **************
 
+* O projeto foi construido utilizando  Angular (Cli),Typescript,Bootstrap
 
+* Para  navegação / roteamento foi criado um modudo de router onde foram adicionados os paths da aplicação 
+
+* Foi criado também um modulo de Autenticação onde o usuario poderá realizar login e ter acesso as rotas  protegidas 
+
+	api/me
+	api/cars
+	api/cars/{id}
+
+* Para acomodar as operações do Usuario foi criado o mudulo "user" 
+    1 Foi adicionado um service "user.service" que consome os serviços do Backend 
+	2 Definidas  operações que são consumidas, como também o paths 
+	3 Definido component para tratar das ações da view do usuario  (cadastro de usuario, listagem entre outros )
+	
+
+ 
 ************INSTRUÇÕES  PARA EXECUTAR O PROJETO  **************
-
 
 
 * intalar um cliente git na maquina 
