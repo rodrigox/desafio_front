@@ -45,6 +45,10 @@ export class CarComponent implements OnInit {
   }
 
 
+  deleteCar(idCar: any) {
+    this.carService.deleteCar(idCar).subscribe((response) => this.car);
+    this.getCar();
+  }
 
 
 }
