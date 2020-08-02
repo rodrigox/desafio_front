@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { Car } from './car';
 import { catchError, tap } from 'rxjs/operators';
+import { User } from '../user/user';
 
 
 let httpOptions = {
@@ -68,6 +69,18 @@ deleteCar(idCar: any): Observable<Car> {
     catchError(this.handleError)
       );
 }
+
+getCarById(idCar: string): Observable<Car> {
+  let httpOptions = this.getOptions();
+  return this.http.get<Car>(this.carUrl,{ headers: httpOptions})
+  .pipe(tap(data => console.log('ALL' + JSON.stringify(data))),
+      catchError(this.handleError)
+  );
+}
+
+
+
+
 
 private getOptions() {
   return new HttpHeaders()

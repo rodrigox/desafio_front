@@ -7,6 +7,8 @@ import { AuthenticationModule } from './authentication/Authentication.module';
 import { AppRoutingModule } from './router/router.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CarComponent } from './car/car.component';
+import { CarEditComponent } from './car/car-edit/car-edit.component';
+
 
 
 
@@ -16,7 +18,8 @@ import { CarComponent } from './car/car.component';
 @NgModule({
   declarations: [
     AppComponent,
-    CarComponent
+    CarComponent,
+    CarEditComponent
   ],
   imports: [
     BrowserModule,

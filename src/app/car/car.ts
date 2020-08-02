@@ -1,7 +1,7 @@
 export class Car {
 
   idCar: number;
-  idUser: number;
+  idUser?: number;
   year: number;
   licensePlate: string;
   model: string;

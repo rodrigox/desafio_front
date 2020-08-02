@@ -1,0 +1,39 @@
+
+<div class="jumbotron "  >
+  <div class="d-flex justify-content-center" >
+
+
+<form #carForm="ngForm" (ngSubmit)="onSubmit()"  >
+  <div class="row">
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="recipient-name" class="col-form-label">Model </label>
+      <input #model="ngModel" required  type="text" class="form-control" [(ngModel)]="car.model" name="model" />
+      <span class="error">Color Field is required </span>
+    </div>
+    <div class="form-group mx-sm-2 mb-2">
+      <label for="message-text" class="col-form-label">Color</label>
+      <input  requred="true" type="email" class="form-control" [(ngModel)]="car.color" name="color">
+
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="form-group mx-sm-3 mb-5">
+      <label for="message-text" class="col-form-label">Year</label>
+      <input class="form-control" [(ngModel)]="car.year" name="year">
+    </div>
+    <div class="row">
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="message-text" class="col-form-label">LicensePlate</label>
+      <input class="form-control" [(ngModel)]="car.licensePlate" name="licensePlate">
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+

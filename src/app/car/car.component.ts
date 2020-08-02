@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Car } from './car';
 import { CarService } from './car.service';
 import { User } from '../user/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-car',
@@ -11,6 +12,8 @@ import { User } from '../user/user';
 export class CarComponent implements OnInit {
   cars: Car[];
   car: Car;
+  @Output() idcar: number;
+
   messageError: string;
   sessionUser: User;
 
@@ -18,11 +21,16 @@ export class CarComponent implements OnInit {
     console.log('teste data teste' + data);
   }
 
-  constructor(private carService: CarService) {}
+  constructor(
+    private carService: CarService,
+    public router: Router
+
+    ) {}
   ngOnInit(): void {
     this.sessionUser =  this.sessionUser = JSON.parse(localStorage.getItem('currentUser'));
     this.car = new Car();
     this.getCar();
+    localStorage.removeItem('idcar');
   }
 
   getCar() {
@@ -53,9 +61,24 @@ export class CarComponent implements OnInit {
     this.getCar();
   }
 
-  updateCar() {
+  /*updateCar() {
     this.carService.updateCar(this.car).subscribe((response) => this.car);
     this.getCar();
     console.log('atualizou');
+  }*/
+
+  updateCar(id: any) {
+
+    localStorage.setItem('idcar', id);
+    this.goTo('car/edit');
+
+
   }
+
+
+  goTo(path): void {
+    this.router.navigateByUrl(path);
+  }
+
+
 }

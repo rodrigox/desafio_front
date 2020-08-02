@@ -20,6 +20,7 @@ export class UserComponent implements OnInit {
     this.getUser();
   }
 
+
   getUser() {
     this.userService.getUsers().subscribe(users => {this.users = users; },
        error => (this.messageError = error as any)
@@ -36,6 +37,14 @@ export class UserComponent implements OnInit {
     this.getUser();
     console.log('salvou salvou');
   }
+
+  parseDate(dateString: string): Date {
+    if (dateString) {
+      this.user.birthday = new Date(dateString);
+        return new Date(dateString);
+    }
+    return null;
+   }
 
   deleteUser(idUser: any){
     this.userService.deleteUser(idUser).subscribe(response => this.user);

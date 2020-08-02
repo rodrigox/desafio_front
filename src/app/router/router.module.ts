@@ -6,6 +6,7 @@ import { LoginComponent } from '../authentication/login.component';
 import { CarComponent } from '../car/car.component';
 import { AboutmeComponent } from '../user/aboutme.component';
 import { AuthGuardService } from '../guards/auth-guard';
+import { CarEditComponent } from '../car/car-edit/car-edit.component';
 
 
 
@@ -16,7 +17,8 @@ import { AuthGuardService } from '../guards/auth-guard';
       {path: 'home', component: UserComponent},
       {path: 'login', component: LoginComponent},
       {path: 'car', component: CarComponent, canActivate: [AuthGuardService]},
-      {path: 'me', component: AboutmeComponent,canActivate: [AuthGuardService]},
+      {path: 'car/edit', component: CarEditComponent, canActivate: [AuthGuardService]},
+      {path: 'me', component: AboutmeComponent, canActivate: [AuthGuardService]},
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: '**', redirectTo: 'home', pathMatch: 'full'},
     ])

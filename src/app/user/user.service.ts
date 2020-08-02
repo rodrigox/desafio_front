@@ -19,10 +19,16 @@ const httpOptions = {
 
 export class UserService{
 private userUrl = 'api/user/';
+private userLogin = 'api/me/';
+
 private postUserUrl = 'api/save';
+
+ headersObject: any ;
+ sessionUser: User;
 
 constructor(private http: HttpClient) {
 
+this.sessionUser =  this.sessionUser = JSON.parse(localStorage.getItem('currentUser'));
 }
 
 getUsers(): Observable<User[]> {
@@ -49,7 +55,11 @@ saveUser(user: User): Observable<User> {
       );
 }
 
-
+updateUser(user: User): Observable<User> {
+  return this.http.post <User>(this.userUrl, user).pipe(tap(data => console.log('PUT REQ' + JSON.stringify(data))),
+    catchError(this.handleError)
+      );
+}
 
 deleteUser(idUser: any): Observable<User> {
   return this.http.delete <User>(this.userUrl + idUser).pipe(tap(data => console.log('DELETE REQ' + JSON.stringify(data))),
@@ -57,4 +67,23 @@ deleteUser(idUser: any): Observable<User> {
       );
 }
 
+
+getUserById(idUser: any): Observable<User> {
+  return this.http.get<User>(this.userUrl + idUser).pipe(tap(data => console.log('ALL' + JSON.stringify(data))),
+          catchError(this.handleError)
+      );
+}
+
+getUserByLogin(login: any): Observable<any> {
+  const httpOptions = this.getOptions();
+  return this.http.get<User>(this.userLogin + login , { headers: httpOptions} ).pipe(tap(data => console.log('ALL' + JSON.stringify(data))),
+          catchError(this.handleError)
+      );
+}
+
+  private getOptions() {
+    return new HttpHeaders()
+      .set('Authorization', 'Bearer ' +
+        this.sessionUser.token);
+  }
 }
