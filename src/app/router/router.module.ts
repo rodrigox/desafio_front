@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { UserComponent } from '../user/user.component';
 import { LoginComponent } from '../authentication/login.component';
 import { CarComponent } from '../car/car.component';
+import { AboutmeComponent } from '../user/aboutme.component';
 
 
 
@@ -14,6 +15,7 @@ import { CarComponent } from '../car/car.component';
       {path: 'home', component: UserComponent},
       {path: 'login', component: LoginComponent},
       {path: 'car', component: CarComponent},
+      {path: 'me', component: AboutmeComponent},
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: '**', redirectTo: 'home', pathMatch: 'full'},
     ])

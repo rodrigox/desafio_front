@@ -1,0 +1,47 @@
+<div class="jumbotron ">
+<div class="d-flex justify-content-center">
+
+  <main role="main" >
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    </div>
+    <h1 class="mt-5">{{user.firstName}} {{user.lastName}} </h1>
+    <br />
+    <label class="lead">Email: {{user.email}} </label>
+    <br />
+    <label class="lead">Login: {{user.login}} </label>
+    <br />
+    <label class="lead">BirthDay: {{user.birthday |date}} </label>
+    <br />
+
+    <label class="lead">CreationDate: {{user.creationDate |date}} </label>
+    <br />
+
+    <label class="lead">lastLogin: {{user.lastLogin |date}} </label>
+    <br />
+
+
+
+    <div >
+      <label>Veiculos</label>
+
+
+      <div>
+        <div class="table">
+          <div class="table" *ngIf="user && user.cars.length">
+            <thead>
+              <tr>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let car of user.cars">
+                <td>{{car.model}}</td>
+                <td>{{ car.year}}</td>
+                <td>{{ car.licensePlate}}</td>
+              </tr>
+            </tbody>
+          </div>
+        </div>
+      </div>
+    </div>

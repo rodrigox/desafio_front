@@ -28,7 +28,7 @@ HST 07 Atualizar carro do usuario
 
 HST  08 Exibir informações do usuario 
 
-
+HST 09 Autenticação Utilizando Token JWT 
 
 
 ***********SOLUÇÃO **************
@@ -56,6 +56,10 @@ HST  08 Exibir informações do usuario
 * intalar um cliente git na maquina 
 
 * Baixar o projeto do repositorio remoto  ->   https://github.com/rodrigox/desafio_front.git
+
+* Utilizar o Git bath ou terminal para instalação da fonte awsome "npm install --save font-awesome angular-font-awesome"
+
+
 
 * Utilizar o Git bath ou terminal para startar a aplicação utilizando o comando : npm start
 

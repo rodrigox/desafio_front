@@ -5,25 +5,44 @@
           <div class="card card-signin my-5">
             <div class="card-body">
               <h5 class="card-title text-center">Sign In</h5>
-              <form class="form-signin">
+              <form [formGroup]="f" novalidate>
                   <label class="custom-control-label" for="customCheck1">Usuario</label>
 
-                <div class="form-label-group">
-                  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                  <label for="inputEmail"></label>
-                </div>
-                <label class="custom-control-label" for="customCheck1">Senha</label>
-                <div class="form-label-group">
+                <div class="form-group has-feedback"
+                  [ngClass]="{'has-success': f.controls['login'].valid,
+                                'has-error': f.controls['login'].invalid && (f.controls['login'].touched || f.controls['login'].dirty)}">
 
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                  <input type="text" id="inputLogin"  formControlName="login" class="form-control" placeholder="Login" required autofocus>
+
+                  <span *ngIf="f.controls['login'].valid" class="glyphicon glyphicon-ok form-control-feedback"
+                    aria-hidden="true"></span>
+
+                  <span *ngIf="f.controls['login'].invalid && (f.controls['login'].touched || f.controls['login'].dirty)">
+
+                    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+
+                    <span class="text-danger">Login.</span>
+                  </span>
+
+
+                  <label for="inputEmail"></label>
+
+                </div  >
+
+
+
+                <label class="custom-control-label" for="customCheck1">Senha</label>
+
+                <div class="form-group" [ngClass]="{'has-success': f.controls['password'].valid,
+                'has-error': f.controls['password'].invalid && (f.controls['password'].touched || f.controls['password'].dirty)}">
+
+                <span class="text-danger" *ngIf="f.controls['password'].invalid && (f.controls['password'].touched || f.controls['password'].dirty)">Campo obrigatório.</span>
+
+                  <input type="password" id="inputPassword"  formControlName="password"  class="form-control" placeholder="Password" required>
                   <label for="inputPassword"></label>
                 </div>
 
-                <div class="custom-control custom-checkbox mb-3">
-                  <input type="checkbox" class="custom-control-input" id="customCheck1">
-                  <label class="custom-control-label" for="customCheck1">Remember password</label>
-                </div>
-                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" [disabled]="f.invalid" (click)="onSubmit()">Sign in</button>
                 <hr class="my-4">
 
               </form>

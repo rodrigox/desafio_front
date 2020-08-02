@@ -13,7 +13,7 @@ export class CarComponent implements OnInit {
   messageError: string;
 
   onSubmit(data){
-    console.log('teste data teste' +data);
+    console.log('teste data teste' + data);
   }
 
   constructor(private carService: CarService) {}
@@ -50,5 +50,9 @@ export class CarComponent implements OnInit {
     this.getCar();
   }
 
-
+  updateCar() {
+    this.carService.updateCar(this.car).subscribe((response) => this.car);
+    this.getCar();
+    console.log('atualizou');
+  }
 }
