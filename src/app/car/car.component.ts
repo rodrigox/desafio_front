@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Car } from './car';
 import { CarService } from './car.service';
+import { User } from '../user/user';
 
 @Component({
   selector: 'app-car',
@@ -11,6 +12,7 @@ export class CarComponent implements OnInit {
   cars: Car[];
   car: Car;
   messageError: string;
+  sessionUser: User;
 
   onSubmit(data){
     console.log('teste data teste' + data);
@@ -18,6 +20,7 @@ export class CarComponent implements OnInit {
 
   constructor(private carService: CarService) {}
   ngOnInit(): void {
+    this.sessionUser =  this.sessionUser = JSON.parse(localStorage.getItem('currentUser'));
     this.car = new Car();
     this.getCar();
   }
@@ -37,7 +40,7 @@ export class CarComponent implements OnInit {
 
   saveCar() {
 
-    this.car.idUser =1;
+    this.car.idUser = this.sessionUser.idUser;
 
     this.carService.saveCar(this.car).subscribe((response) => this.car);
     this.getCar();

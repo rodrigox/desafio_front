@@ -5,7 +5,7 @@ import { Car } from './car';
 import { catchError, tap } from 'rxjs/operators';
 
 
-const httpOptions = {
+let httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
     'Authorization': 'my-auth-token'
@@ -19,13 +19,18 @@ const httpOptions = {
 
 export class CarService{
 private carUrl = 'api/car/';
+sessionUser: User;
+
 
 constructor(private http: HttpClient) {
+  this.sessionUser =  this.sessionUser = JSON.parse(localStorage.getItem('currentUser'));
 
 }
 
 getCars(): Observable<Car[]> {
-  return this.http.get<Car[]>(this.carUrl)
+  let httpOptions = this.getOptions();
+
+  return this.http.get<Car[]>(this.carUrl,{ headers: httpOptions})
       .pipe(tap(data => console.log('ALL' + JSON.stringify(data))),
           catchError(this.handleError)
       );
@@ -43,21 +48,31 @@ handleError(err: HttpErrorResponse) {
 }
 
 saveCar(car: Car): Observable<Car> {
-  return this.http.post <Car>(this.carUrl, car).pipe(tap(data => console.log('POST REQ' + JSON.stringify(data))),
+  let httpOptions = this.getOptions();
+  return this.http.post <Car>(this.carUrl, car, { headers: httpOptions}).pipe(tap(data => console.log('POST REQ' + JSON.stringify(data))),
     catchError(this.handleError)
       );
 }
 
 updateCar(car: Car): Observable<Car> {
-  return this.http.post <Car>(this.carUrl, car).pipe(tap(data => console.log('PUT REQ' + JSON.stringify(data))),
+  let httpOptions = this.getOptions();
+
+  return this.http.post <Car>(this.carUrl, car,{ headers: httpOptions}).pipe(tap(data => console.log('PUT REQ' + JSON.stringify(data))),
     catchError(this.handleError)
       );
 }
 
 deleteCar(idCar: any): Observable<Car> {
-  return this.http.delete <Car>(this.carUrl + idCar).pipe(tap(data => console.log('DELETE REQ' + JSON.stringify(data))),
+  let httpOptions = this.getOptions();
+  return this.http.delete <Car>(this.carUrl + idCar, { headers: httpOptions}).pipe(tap(data => console.log('DELETE REQ' + JSON.stringify(data))),
     catchError(this.handleError)
       );
+}
+
+private getOptions() {
+  return new HttpHeaders()
+    .set('Authorization', 'Bearer ' +
+      this.sessionUser.token);
 }
 
 }

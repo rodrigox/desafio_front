@@ -13,4 +13,5 @@ export class User {
   creationDate: Date;
   lastLogin: Date;
   cars: Car[];
+  token?: string;
 }

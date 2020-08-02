@@ -11,6 +11,9 @@ import { Car } from '../car/car';
 export class AboutmeComponent implements OnInit {
 
 
+   sessionUser: User;
+
+
   users: User[];
   user: User;
   cars: Car[];
@@ -22,14 +25,14 @@ export class AboutmeComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = new User();
-    this.getUserById();
-console.log("printando User : " +this.user);
+    this.sessionUser = JSON.parse(localStorage.getItem('currentUser'));
+
+     this.getUserByLogin();
+
   }
 
-  getUserById() {
-
-   this.idUser=1;
-   this.userService.getUserById(this.idUser).subscribe(user => {this.user = user; },
+  getUserByLogin() {
+   this.userService.getUserByLogin( this.sessionUser.login).subscribe(user => {this.user = user; },
        error => (this.messageError = error as any)
        );
    }

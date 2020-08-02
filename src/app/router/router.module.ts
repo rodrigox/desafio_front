@@ -5,6 +5,7 @@ import { UserComponent } from '../user/user.component';
 import { LoginComponent } from '../authentication/login.component';
 import { CarComponent } from '../car/car.component';
 import { AboutmeComponent } from '../user/aboutme.component';
+import { AuthGuardService } from '../guards/auth-guard';
 
 
 
@@ -14,8 +15,8 @@ import { AboutmeComponent } from '../user/aboutme.component';
     RouterModule.forRoot([
       {path: 'home', component: UserComponent},
       {path: 'login', component: LoginComponent},
-      {path: 'car', component: CarComponent},
-      {path: 'me', component: AboutmeComponent},
+      {path: 'car', component: CarComponent, canActivate: [AuthGuardService]},
+      {path: 'me', component: AboutmeComponent,canActivate: [AuthGuardService]},
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: '**', redirectTo: 'home', pathMatch: 'full'},
     ])
