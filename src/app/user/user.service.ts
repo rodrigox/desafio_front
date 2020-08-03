@@ -21,7 +21,7 @@ export class UserService{
 private userUrl = 'carsystem/api/user/';
 private userLogin = 'carsystem/api/me/';
 
-private postUserUrl = 'carsystem/api/save';
+private postUserUrl = '/carsystem/api/save';
 
  headersObject: any ;
  sessionUser: User;
