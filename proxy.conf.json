@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "https://desafio-rest.herokuapp.com/",
+    "target": "https://desafio-rest.herokuapp.com/carsystem",
     "secure": false,
     "changeOrigin": true,
     "timeout": 10000000
