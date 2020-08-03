@@ -1,1 +1,1 @@
-web: node src/desafio.js
+web: node src/server.js
