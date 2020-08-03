@@ -18,10 +18,10 @@ const httpOptions = {
 })
 
 export class UserService{
-private userUrl = 'api/user/';
-private userLogin = 'api/me/';
+private userUrl = 'carsystem/api/user/';
+private userLogin = 'carsystem/api/me/';
 
-private postUserUrl = 'api/save';
+private postUserUrl = 'carsystem/api/save';
 
  headersObject: any ;
  sessionUser: User;
