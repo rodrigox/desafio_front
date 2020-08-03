@@ -8,6 +8,7 @@ import { AppRoutingModule } from './router/router.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CarComponent } from './car/car.component';
 import { CarEditComponent } from './car/car-edit/car-edit.component';
+import { EditUserComponent } from './user/edit-user/edit-user.component';
 
 
 
@@ -19,7 +20,9 @@ import { CarEditComponent } from './car/car-edit/car-edit.component';
   declarations: [
     AppComponent,
     CarComponent,
-    CarEditComponent
+    CarEditComponent,
+    EditUserComponent
+
   ],
   imports: [
     BrowserModule,

@@ -58,7 +58,7 @@ saveCar(car: Car): Observable<Car> {
 updateCar(car: Car): Observable<Car> {
   let httpOptions = this.getOptions();
 
-  return this.http.post <Car>(this.carUrl, car,{ headers: httpOptions}).pipe(tap(data => console.log('PUT REQ' + JSON.stringify(data))),
+  return this.http.put <Car>(this.carUrl, car,{ headers: httpOptions}).pipe(tap(data => console.log('PUT REQ' + JSON.stringify(data))),
     catchError(this.handleError)
       );
 }

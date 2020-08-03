@@ -3,6 +3,7 @@ import { User } from '../../user/user';
 import { Car } from '../car';
 import { CarService } from '../car.service';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-car-edit',
@@ -14,20 +15,27 @@ export class CarEditComponent implements OnInit {
   sessionUser: User;
   idCar: string;
   messageError: string;
+  f: FormGroup;
 
 
-  constructor(private carService: CarService, public router: Router) {}
+  constructor( private formBuilder: FormBuilder,
+    private  carService: CarService, public router: Router) {
+
+  }
 
   ngOnInit(): void {
     this.sessionUser = this.sessionUser = JSON.parse(
       localStorage.getItem('currentUser')
     );
 
+    this.f = this.formBuilder.group({
+      model: [null, [Validators.required]],
+      color: [null, [Validators.required]]});
     this.car = new Car();
 
     this.idCar = localStorage.getItem('idcar');
     this.getCarById();
-    console.log("****CAR *"+JSON.stringify((this.car)));
+    console.log("****CAR *"+this.car);
 
     this.idCar = localStorage.getItem('idcar');
   }
@@ -38,20 +46,17 @@ export class CarEditComponent implements OnInit {
     }
 
     this.carService.getCarById(this.idCar).subscribe(
-      (car) => {
-        this.car = car;
+      (result) => {
+        this.car = result[0];
       },
       (error) => (this.messageError = error as any)
     );
   }
 
-  updateCar(car: Car) {
-    this.car.idUser = this.sessionUser.idUser;
-    this.carService.updateCar(this.car).subscribe((response) => this.car);
-    console.log('salvou salvou');
-  }
+
   onSubmit() {
     this.car.idUser = this.sessionUser.idUser;
     this.carService.updateCar(this.car).subscribe((response) => this.car);
+    this.router.navigateByUrl('car');
   }
 }

@@ -56,7 +56,7 @@ saveUser(user: User): Observable<User> {
 }
 
 updateUser(user: User): Observable<User> {
-  return this.http.post <User>(this.userUrl, user).pipe(tap(data => console.log('PUT REQ' + JSON.stringify(data))),
+  return this.http.put <User>(this.userUrl, user).pipe(tap(data => console.log('PUT REQ' + JSON.stringify(data))),
     catchError(this.handleError)
       );
 }

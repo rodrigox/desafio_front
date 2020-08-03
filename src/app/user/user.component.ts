@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './user';
 import { UserService } from './user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -14,7 +15,7 @@ export class UserComponent implements OnInit {
   messageError: string;
 
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, public router: Router) {}
   ngOnInit(): void {
     this.user = new User();
     this.getUser();
@@ -52,10 +53,22 @@ export class UserComponent implements OnInit {
   }
 
 
- updateUser() {
+ /*updateUser() {
   this.userService.updateUser(this.user).subscribe(response => this.user);
   this.getUser();
   console.log('atualizou');
+}*/
+
+updateUser(idUser: any) {
+
+  localStorage.setItem('iduser', idUser);
+  this.goTo('user/edit');
+
+}
+
+
+goTo(path): void {
+  this.router.navigateByUrl(path);
 }
 
 }

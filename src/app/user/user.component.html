@@ -39,7 +39,7 @@
                     <td>{{ usuario.phone }}</td>
 
                     <td>
-                    <td> <button type="submit" class="btn btn-light">Atualizar</button> </td>
+                    <td> <button type="submit" class="btn btn-light" (click)="updateUser(usuario.idUser)">Atualizar</button> </td>
                     <td> <button type="submit" class="btn btn-light" (click)="deleteUser(usuario.idUser)">Remover</button>
 
 
