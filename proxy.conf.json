@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "https://app-desafio-web.herokuapp.com/",
+    "target": "https://desafio-rest.herokuapp.com/",
     "secure": false,
     "changeOrigin": true,
     "timeout": 10000000
