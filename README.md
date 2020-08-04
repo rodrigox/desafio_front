@@ -33,7 +33,10 @@ HST 09 Autenticação Utilizando Token JWT
 
 ***********SOLUÇÃO **************
 
-* O projeto foi construido utilizando  Angular (Cli),Typescript,Bootstrap
+* O projeto foi construido utilizando :
+ Angular (Cli),
+ Typescript,
+ Bootstrap
 
 * Para  navegação / roteamento foi criado um modudo de router onde foram adicionados os paths da aplicação 
 
@@ -56,10 +59,6 @@ HST 09 Autenticação Utilizando Token JWT
 * intalar um cliente git na maquina 
 
 * Baixar o projeto do repositorio remoto  ->   https://github.com/rodrigox/desafio_front.git
-
-* Utilizar o Git bath ou terminal para instalação da fonte awsome "npm install --save font-awesome angular-font-awesome"
-
-
 
 * Utilizar o Git bath ou terminal para startar a aplicação utilizando o comando : npm start
 

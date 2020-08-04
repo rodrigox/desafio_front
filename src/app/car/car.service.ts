@@ -19,7 +19,7 @@ let httpOptions = {
 })
 
 export class CarService{
-private carUrl = 'carsystem/api/car/';
+private carUrl = 'api/car/';
 sessionUser: User;
 
 
