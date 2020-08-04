@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "https://desafio-rest.herokuapp.com/",
+    "target": "http://localhost:8086/",
     "secure": false,
     "changeOrigin": true,
     "timeout": 10000000
