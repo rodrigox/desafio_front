@@ -34,7 +34,7 @@ export class AuthService {
     login: string;
     pessowrd: string;
   }): Observable<any> {
-    return this.http.post<User>(`${apiPathUrl}signin/`, credentials, httpOptions).pipe(
+    return this.http.post<User>(`${apiPathUrl}signin`, credentials, httpOptions).pipe(
       map((result) => this.save_token(result)),
       catchError(this.handleError<any>('login'))
     );
