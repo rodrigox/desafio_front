@@ -9,6 +9,8 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
+const apiPathUrl = 'http://desafio-rest.herokuapp.com/carsystem/api/';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -32,7 +34,7 @@ export class AuthService {
     login: string;
     pessowrd: string;
   }): Observable<any> {
-    return this.http.post<User>(this.loginUrl, credentials, httpOptions).pipe(
+    return this.http.post<User>(`${apiPathUrl}signin/`, credentials, httpOptions).pipe(
       map((result) => this.save_token(result)),
       catchError(this.handleError<any>('login'))
     );

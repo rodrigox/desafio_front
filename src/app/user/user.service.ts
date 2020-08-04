@@ -12,14 +12,15 @@ const httpOptions = {
   })
 };
 
+const apiPathUrl = 'http://desafio-rest.herokuapp.com/carsystem/api/';
 //singleton
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserService{
-private userUrl = 'api/user/';
-private userLogin = 'api/me/';
+private userUrl = '/user/';
+private userLogin = '/me/';
 
 private postUserUrl = 'api/save';
 
@@ -32,7 +33,7 @@ this.sessionUser =  this.sessionUser = JSON.parse(localStorage.getItem('currentU
 }
 
 getUsers(): Observable<User[]> {
-  return this.http.get<User[]>(this.userUrl)
+  return this.http.get<User[]>(`${apiPathUrl}user/`)
       .pipe(tap(data => console.log('ALL' + JSON.stringify(data))),
           catchError(this.handleError)
       );
@@ -50,33 +51,33 @@ handleError(err: HttpErrorResponse) {
 }
 
 saveUser(user: User): Observable<User> {
-  return this.http.post <User>(this.userUrl, user).pipe(tap(data => console.log('POST REQ' + JSON.stringify(data))),
+  return this.http.post <User>(`${apiPathUrl}user/`, user).pipe(tap(data => console.log('POST REQ' + JSON.stringify(data))),
     catchError(this.handleError)
       );
 }
 
 updateUser(user: User): Observable<User> {
-  return this.http.put <User>(this.userUrl, user).pipe(tap(data => console.log('PUT REQ' + JSON.stringify(data))),
+  return this.http.put <User>(`${apiPathUrl}user/`, user).pipe(tap(data => console.log('PUT REQ' + JSON.stringify(data))),
     catchError(this.handleError)
       );
 }
 
 deleteUser(idUser: any): Observable<User> {
-  return this.http.delete <User>(this.userUrl + idUser).pipe(tap(data => console.log('DELETE REQ' + JSON.stringify(data))),
+  return this.http.delete <User>(`${apiPathUrl}user/` + idUser).pipe(tap(data => console.log('DELETE REQ' + JSON.stringify(data))),
     catchError(this.handleError)
       );
 }
 
 
 getUserById(idUser: any): Observable<User> {
-  return this.http.get<User>(this.userUrl + idUser).pipe(tap(data => console.log('ALL' + JSON.stringify(data))),
+  return this.http.get<User>(`${apiPathUrl}user/` + idUser).pipe(tap(data => console.log('ALL' + JSON.stringify(data))),
           catchError(this.handleError)
       );
 }
 
 getUserByLogin(login: any): Observable<any> {
   const httpOptions = this.getOptions();
-  return this.http.get<User>(this.userLogin + login , { headers: httpOptions} ).pipe(tap(data => console.log('ALL' + JSON.stringify(data))),
+  return this.http.get<User>(`${apiPathUrl}me/` + login , { headers: httpOptions} ).pipe(tap(data => console.log('ALL' + JSON.stringify(data))),
           catchError(this.handleError)
       );
 }

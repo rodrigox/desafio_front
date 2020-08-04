@@ -12,6 +12,7 @@ let httpOptions = {
     'Authorization': 'my-auth-token'
   })
 };
+const apiPathUrl = 'http://desafio-rest.herokuapp.com/carsystem/api/';
 
 //singleton
 @Injectable({
@@ -31,7 +32,7 @@ constructor(private http: HttpClient) {
 getCars(): Observable<Car[]> {
   let httpOptions = this.getOptions();
 
-  return this.http.get<Car[]>(this.carUrl,{ headers: httpOptions})
+  return this.http.get<Car[]>(`${apiPathUrl}car/`, { headers: httpOptions})
       .pipe(tap(data => console.log('ALL' + JSON.stringify(data))),
           catchError(this.handleError)
       );
@@ -50,7 +51,7 @@ handleError(err: HttpErrorResponse) {
 
 saveCar(car: Car): Observable<Car> {
   let httpOptions = this.getOptions();
-  return this.http.post <Car>(this.carUrl, car, { headers: httpOptions}).pipe(tap(data => console.log('POST REQ' + JSON.stringify(data))),
+  return this.http.post <Car>(`${apiPathUrl}car/`, car, { headers: httpOptions}).pipe(tap(data => console.log('POST REQ' + JSON.stringify(data))),
     catchError(this.handleError)
       );
 }
@@ -58,21 +59,21 @@ saveCar(car: Car): Observable<Car> {
 updateCar(car: Car): Observable<Car> {
   let httpOptions = this.getOptions();
 
-  return this.http.put <Car>(this.carUrl, car,{ headers: httpOptions}).pipe(tap(data => console.log('PUT REQ' + JSON.stringify(data))),
+  return this.http.put <Car>(`${apiPathUrl}car/`, car,{ headers: httpOptions}).pipe(tap(data => console.log('PUT REQ' + JSON.stringify(data))),
     catchError(this.handleError)
       );
 }
 
 deleteCar(idCar: any): Observable<Car> {
   let httpOptions = this.getOptions();
-  return this.http.delete <Car>(this.carUrl + idCar, { headers: httpOptions}).pipe(tap(data => console.log('DELETE REQ' + JSON.stringify(data))),
+  return this.http.delete <Car>(`${apiPathUrl}car/` + idCar, { headers: httpOptions}).pipe(tap(data => console.log('DELETE REQ' + JSON.stringify(data))),
     catchError(this.handleError)
       );
 }
 
 getCarById(idCar: string): Observable<Car> {
   let httpOptions = this.getOptions();
-  return this.http.get<Car>(this.carUrl,{ headers: httpOptions})
+  return this.http.get<Car>(`${apiPathUrl}car/`, { headers: httpOptions})
   .pipe(tap(data => console.log('ALL' + JSON.stringify(data))),
       catchError(this.handleError)
   );
