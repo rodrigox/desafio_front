@@ -12,7 +12,7 @@ let httpOptions = {
     'Authorization': 'my-auth-token'
   })
 };
-const apiPathUrl = 'http://desafio-rest.herokuapp.com/carsystem/api/';
+const apiPathUrl = 'https://desafio-rest.herokuapp.com/carsystem/api/';
 
 //singleton
 @Injectable({

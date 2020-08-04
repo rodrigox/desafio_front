@@ -9,7 +9,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
-const apiPathUrl = 'http://desafio-rest.herokuapp.com/carsystem/api/';
+const apiPathUrl = 'https://desafio-rest.herokuapp.com/carsystem/api/';
 
 @Injectable({
   providedIn: 'root',
